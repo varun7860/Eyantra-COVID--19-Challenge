@@ -1,7 +1,5 @@
 import sqlite3
 from sqlite3 import Error
-from oauth2client.service_account import ServiceAccountCredentials
-import numpy as np
 import pandas as pd
 
 def excel():
