@@ -37,8 +37,9 @@ def main():
          break
        else:
          print("Wrong Password")
-
-    print("login successful")
+    
+    if(flag==2):
+        print("login successful")
            
            
 if __name__ == "__main__":
