@@ -18,8 +18,8 @@ def main():
     dataframe = read_sql(database)
     Auth = read_excel(dataframe)
     
-    login = input("enter your login id:  ")
     for i in Auth:
+      login = input("enter your login id:  ")
       if login in Auth:
         print("username found")
         login = str(login)
@@ -27,7 +27,7 @@ def main():
         break
       else:
         print("username not found")
-        
+    print("Too Many Tries Logging in")    
     while(flag ==1):
        x = Auth.get(login)
        password = input("enter your password:  ")
