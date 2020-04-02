@@ -28,6 +28,21 @@ def update(data):
     new_dictionary = {new_Items_list[i]:new_Quantity_list[i] for i in range(len(new_Quantity_list))}
     return new_dictionary
 
+def new_login(Dict):
+     for i in Dict:
+       flag = -1
+       login = input("enter your login id:  ")
+       if login in Dict:
+         print("username found")
+         login = str(login)
+         flag = 1
+         break
+       else:
+         print("username not found")
+         break
+
+     return login
+
 def main():
     database = "  "  #Put the name of your database here
     dataframe = read_sql(database)
@@ -45,15 +60,23 @@ def main():
         print("username not found")
         break
         
-    if(flag == -1):
+   if(flag == -1):
       confirm = input("Please Register to view Database(y/n):  ")  
       if(confirm == 'y'):
          Auth= update(database)
-         print("Now please Refresh the Page and try logging in Again")
-         flag = -2
+         login = new_login(Auth)
+         flag = 1
       else:
-         print("Database access denied") 
-    
+         print("Database access denied")
+         flag = 0
+         reset_flag = 0
+         for j in range(5):
+             login = new_login(Auth)
+             reset_flag +=1
+             if(reset_flag ==5):
+                 print("Error:To many tries Logging in , Refresh the Page and Try Again")
+                 break
+                    
     while(flag ==1):
        x = Auth.get(login)
        password = input("enter your password:  ")
