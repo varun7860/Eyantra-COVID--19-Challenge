@@ -34,6 +34,7 @@ def main():
        password = str(password)
        if(password == x):
          print("Password Confirmed")
+         flag = 2
          break
        else:
          print("Wrong Password")
