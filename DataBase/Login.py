@@ -64,6 +64,7 @@ def main():
       confirm = input("Please Register to view Database(y/n):  ")  
       if(confirm == 'y'):
          Auth= update(database)
+         print("Great Now Try Logging in Again")
          login = new_login(Auth)
          flag = 1
       else:
