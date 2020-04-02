@@ -73,6 +73,9 @@ def main():
          reset_flag = 0
          for j in range(5):
              login = new_login(Auth)
+             if login in Auth:
+                 flag = 1
+                 break
              reset_flag +=1
              if(reset_flag ==5):
                  print("Error:To many tries Logging in , Refresh the Page and Try Again")
