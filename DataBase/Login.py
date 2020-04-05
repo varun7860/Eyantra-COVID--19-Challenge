@@ -45,6 +45,33 @@ def new_login(Dict):
 
      return login
 
+def supplies(data,Dict):
+    ID = input("enter your current username:  ")
+    if ID in Dict:
+        sanitiser = input("Enter the Quantity of sanitiser you have: " )
+        beds = input("Enter the Quantity of beds you have:  ")
+        Masks = input("Enter the Quantity of Masks you have:  ")
+        vitamin_C = input("Enter the Quantity of vitaminC supplies you have:  ")
+        vitamin_B12 = input("Enter the Quantity of vitaminB12 supplies you have:  ")
+        ppe = input("Enter the Quantity of PPE supplies you have: ")
+        ventilator = input("Enter the Quantity of ventilators you have seperated by comma:  ")
+        oxygenator = input("Enter the Quantity of oxygenerators you have seperated by comma:  ")
+        surgicals  = input("Enter the Quantity of surgicals you have:  ")
+        connect = sqlite3.connect(data)
+        curser = connect.cursor()
+        curser.execute('''Update Personal set SANITISER = (?) where USERNAME = (?)''',(sanitiser,ID))
+        curser.execute('''Update Personal set BEDS = (?) where USERNAME = (?)''',( beds,ID))
+        curser.execute('''Update Personal set MASKS = (?) where USERNAME = (?)''',(Masks ,ID))
+        curser.execute('''Update Personal set VITAMINC = (?) where USERNAME = (?)''',(vitamin_C,ID))
+        curser.execute('''Update Personal set VITAMINB12 = (?) where USERNAME = (?)''',(vitamin_B12,ID))
+        curser.execute('''Update Personal set PPE = (?) where USERNAME = (?)''',(ppe,ID))
+        curser.execute('''Update Personal set VENTILATOR = (?) where USERNAME = (?)''',(ventilator,ID))
+        curser.execute('''Update Personal set OXYGENERATOR = (?) where USERNAME = (?)''',(oxygenator,ID))
+        curser.execute('''Update Personal set SURGICALS = (?) where USERNAME = (?)''',(surgicals ,ID))
+        connect.commit()
+    else:
+        print("Username not Found :(  , Please Refresh the Page and Try Again")
+
 def medical_data(data,Dict):
     ID = input("enter your current username:  ")
     if ID in Dict: 
@@ -74,10 +101,8 @@ def personal_details(data,Dict):
         outcome = "F"
         return outcome
         
-    
-
 def main():
-    database = "Final_Login.db"
+    database = "Final.db"
     dataframe = read_sql(database)
     username_list, password_list,Auth = read_excel(dataframe)
     flag = 0
