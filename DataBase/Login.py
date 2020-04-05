@@ -166,7 +166,7 @@ def main():
         print("profile updated")
         update = input("Do you want to Upload or update your medical List(y/n):   ")
         if(update == 'y'):
-            medical_data(database,Auth)
+            supplies(database,Auth)
             flag = 4
             print("Medical Data is Successfully Updated")
         else:
